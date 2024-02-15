@@ -1,5 +1,5 @@
-import { View, Text, Image, StyleSheet, ScrollView } from 'react-native';
-import React from 'react';
+import { View, Text, Image, StyleSheet, ScrollView, Button, Linking } from 'react-native';
+import React, { useCallback } from 'react';
 import data from './Attractions.json'
 
 const styles = StyleSheet.create({
@@ -38,35 +38,48 @@ const styles = StyleSheet.create({
         height: 250,
         marginVertical: 10
     },
+
     Address: {
         fontSize: 4,
         padding: 10,
+        marginBottom: 10
+    },
+
+    Map: {
         marginBottom: 50
     }
+
 })
 
 const Detail = ({ navigation, route }) => {
     let d = data.find(o => o.id === route.params.id)
+    const handleMap = useCallback(async () => {
+        await Linking.openURL('http://maps.google.com/maps?q='+d.latitude+','+d.longitude);
+    })
+
     return (
         <ScrollView style={styles.BackgroundColor}>
             <View style={styles.Card}>
-                <Image style={styles.CoverImage} source={{ uri: d.coverImage }}/>
-                <Text style={styles.Name}>{ d.name }</Text>
-                <Text style={styles.Description}>{ d.deepDetail.subDetail1 }</Text>
+                <Image style={styles.CoverImage} source={{ uri: d.coverImage }} />
+                <Text style={styles.Name}>{d.name}</Text>
+                <Text style={styles.Description}>{d.deepDetail.subDetail1}</Text>
 
-                <Image style={styles.CoverImage} source={{ uri: d.deepDetail.subImage1 }}/>
-                <Text style={styles.Description}>{ d.deepDetail.subDetail2 }</Text>
+                <Image style={styles.CoverImage} source={{ uri: d.deepDetail.subImage1 }} />
+                <Text style={styles.Description}>{d.deepDetail.subDetail2}</Text>
 
-                <Image style={styles.CoverImage} source={{ uri: d.deepDetail.subImage2 }}/>
-                <Text style={styles.Description}>{ d.deepDetail.subDetail3 }</Text>
+                <Image style={styles.CoverImage} source={{ uri: d.deepDetail.subImage2 }} />
+                <Text style={styles.Description}>{d.deepDetail.subDetail3}</Text>
 
-                <Image style={styles.CoverImage} source={{ uri: d.deepDetail.subImage3 }}/>
-                <Text style={styles.Description}>{ d.deepDetail.subDetail4 }</Text>
+                <Image style={styles.CoverImage} source={{ uri: d.deepDetail.subImage3 }} />
+                <Text style={styles.Description}>{d.deepDetail.subDetail4}</Text>
             </View>
             <View style={styles.Address}>
-                <Text>{ d.address.location }</Text>
-                <Text>{ d.address.open }</Text>
-                <Text>{ d.address.contract }</Text>
+                <Text>{d.address.location}</Text>
+                <Text>{d.address.open}</Text>
+                <Text>{d.address.contract}</Text>
+            </View>
+            <View style={styles.Map}>
+                <Button title="Map" onPress={handleMap} />
             </View>
         </ScrollView>
     )

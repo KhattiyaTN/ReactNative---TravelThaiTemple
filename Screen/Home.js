@@ -15,7 +15,10 @@ const styles = StyleSheet.create({
 
     TopHeader: {
         color: "#000",
-        fontSize: 35
+        fontSize: 35,
+        fontFamily: "",
+        fontWeight: "bold",
+        marginVertical: 20
     },
 
     Card: {
