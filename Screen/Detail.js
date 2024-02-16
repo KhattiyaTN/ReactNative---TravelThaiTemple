@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
 const Detail = ({ navigation, route }) => {
     let d = data.find(o => o.id === route.params.id)
     const handleMap = useCallback(async () => {
-        await Linking.openURL('http://maps.google.com/maps?q='+d.latitude+','+d.longitude);
+        await Linking.openURL('http://maps.google.com/maps?q=' + d.latitude + ',' + d.longitude);
     })
 
     return (

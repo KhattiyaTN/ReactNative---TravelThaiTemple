@@ -1,7 +1,7 @@
 import { View, Text, Image, Pressable } from 'react-native'
 import React from 'react'
 
-const Temple = ({navigation}) => {
+const Temple = ({ navigation }) => {
     const onPress = () => {
         navigation.navigate('Home')
     }

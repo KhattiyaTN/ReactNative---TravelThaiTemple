@@ -1,7 +1,7 @@
 import React from 'react';
-import { View, Text } from 'react-native';
-import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
+// import { View, Text } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Temple from './Screen/Temple';
 import Home from './Screen/Home';
 import Detail from './Screen/Detail';
@@ -25,7 +25,7 @@ const App = () => {
         <Stack.Screen
           name="Detail"
           component={Detail}
-          options={{ title: 'Back'}}
+          options={{ title: 'Back' }}
         />
       </Stack.Navigator>
     </NavigationContainer>
